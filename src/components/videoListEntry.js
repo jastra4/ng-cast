@@ -1,10 +1,11 @@
 angular.module('video-player')
 .component('videoListEntry', {
   bindings: {
-    video: '<'
+    video: '<',
+    change: '<'
   },
   controller: function() {
-    console.log(this);
+    //console.log('videoListEntry', this);
     //this.vid = videoData;
     //console.log(vid);
   },
