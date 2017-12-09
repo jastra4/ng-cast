@@ -1,14 +1,20 @@
 angular.module('video-player')
+  .component('search', {
+    bindings: {
+      result: '<',
+      service: '<'
+    },
+    controller: function(youTube) {
 
-.component('search', {
-  controller: function() {
-    this.searchtext = '';
-  },
+      this.handleClick = () => {
+        this.service.search(this.videos, (data) => {
+          this.result(data);
+        });
+      };
 
-  templateUrl: 'src/templates/search.html',
+      this.handleClick = this.handleClick.bind(this);
+    },
 
-  bindings: {
-    searchtext: '<',
-    newsearch: '<'
-  }
-});
+    templateUrl: 'src/templates/search.html'
+
+  });

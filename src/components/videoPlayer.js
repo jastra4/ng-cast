@@ -1,17 +1,13 @@
 angular.module('video-player')
+  .component('videoPlayer', {
+    bindings: {
+      video: '<'
+    },
+    controller: function() {
 
-.component('videoPlayer', {
-  bindings: {
-    current: '<'
-  },
-  controller: function() {
-    // this.url = "https://www.youtube.com/embed/" + this.current.id.videoId;
-    // console.log(this.current);
-    this.url = function(id) {
-      let prefix = "https://www.youtube.com/embed/";
-      // console.log(prefix + id);
-      return prefix + id;
-    }
-  },
-  templateUrl: "src/templates/videoPlayer.html"
-});
+      this.url = function(id) {
+        return this.video ? (`https://www.youtube.com/embed/${this.video.id.videoId}`) : '';
+      };
+    },
+    templateUrl: 'src/templates/videoPlayer.html'
+  });

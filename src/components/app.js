@@ -1,29 +1,29 @@
 angular.module('video-player')
-
   .component('app', {
     bindings: {
-      name: '@'
+      result: '<'
     },
+
     templateUrl: 'src/templates/app.html',
     controller: function(youTube) {
-      this.videos = window.exampleVideoData;
-      this.current = window.exampleVideoData[0];
+      this.videos = '';
+      this.currentVideo = '';
+      this.searchService = youTube;
      
-      this.change = function(data) {
-        this.current = data;
-      };
-      
-      this.setvideolist = function(videos) {
-        this.videos = videos;
-        this.current = videos[0];
+      this.selectVideo = function(data) {
+        this.currentVideo = data;
       };
 
-      this.newsearch = function(text) {
-        youTube.getVideos(text, this.setvideolist);
+      this.searchResults = function(results) {
+        // console.log('callback ', text, callback);
+        this.videos = results;
+        this.currentVideo = results[0];
+        // youTube.search(text, callback);
       };
 
-      this.setvideolist = this.setvideolist.bind(this);
-      this.change = this.change.bind(this);
-      this.newsearch = this.newsearch.bind(this);
+      // this.result = this.result.bind(this);
+      this.selectVideo = this.selectVideo.bind(this);
+      this.searchResults = this.searchResults.bind(this);
+      youTube.search('', this.searchResults);
     }
   });
