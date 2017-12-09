@@ -10,7 +10,8 @@ angular.module('video-player')
     this.current = window.exampleVideoData[0];
    
     this.change = function(data) {
-      this.current = data;
+      this.videos = data;
+      this.current = data[0];
     }
     this.change = this.change.bind(this);
     this.newsearch = function(text) {

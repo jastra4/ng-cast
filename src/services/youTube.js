@@ -3,18 +3,16 @@ angular.module('video-player')
 .service('youTube', function($http){
   this.getVideos = function(query) {
     $http({
-      method: 'GET',
-      url: 'https://www.googleapis.com/youtube/v3/search',
+        method: 'GET',
+        url: 'https://www.googleapis.com/youtube/v3/search',
       params: {
         key: window.YOUTUBE_API_KEY,
-        part: 'snippet',
-      },
-      data: {
         q: query,
         type: 'video',
         videoEmbeddable: true,
-        maxResults: 5
-      }
+        maxResults: 5,
+        part: 'snippet'
+      },
     }).then(function successCallback(response){
       console.log('success ', response);
     }, function errorCallback(response){
