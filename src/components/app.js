@@ -5,7 +5,7 @@ angular.module('video-player')
     name: '@'
   },
   templateUrl: 'src/templates/app.html',
-  controller: function() {
+  controller: function(youTube) {
     this.videos = window.exampleVideoData;
     this.current = window.exampleVideoData[0];
    
@@ -15,9 +15,7 @@ angular.module('video-player')
     this.change = this.change.bind(this);
     this.newsearch = function(text) {
       console.log('newsearch called');
-      module.service('youTube', function() {
-        this.getVideos(text);
-      });
+      youTube.getVideos(text);
     }
     this.newsearch = this.newsearch.bind(this);
   }
