@@ -1,6 +1,14 @@
 <div class="search-bar form-inline">
-  <input class="form-control" type="text" ng-model="$ctrl.videos" ng-keyup=""/>
-  <button class="btn" ng-click="$ctrl.handleClick()">
+  <input 
+  	class="form-control" 
+  	type="text" 
+  	ng-model="$ctrl.videos" 
+  	ng-keyup="$ctrl.handleClick()"
+  />
+  <button 
+  	class="btn" 
+  	ng-click="$ctrl.handleClick()"
+  >
     <span class="glyphicon glyphicon-search"></span>
   </button>
 </div>
